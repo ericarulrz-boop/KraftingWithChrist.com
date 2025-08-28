@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KraftedWithChrist Shop</title>
+    <!-- Use Tailwind CSS for a responsive, modern design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply a nice font to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Basic styling for the modal, initially hidden */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header & Navigation Bar -->
+    <header class="bg-white shadow-lg py-4 px-6 md:px-12">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-900">
+                KraftedWithChrist
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#products" class="text-gray-600 hover:text-gray-900 transition-colors">Products</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="relative text-gray-600 hover:text-gray-900 focus:outline-none">
+                    <!-- Shopping Cart Icon (using inline SVG for simplicity) -->
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
+                    </svg>
+                    <!-- Small circle to show number of items in cart -->
+                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="py-12 md:py-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Handmade with Love, for You.</h1>
+                    <p class="mt-4 text-lg text-gray-600">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
+                    <a href="#products" class="mt-8 self-start px-6 py-3 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                        Shop Now
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <!-- Placeholder image URL with a pastel color theme -->
+                    <img src="https://placehold.co/800x600/e9d5ff/8b5cf6?text=Handmade+Crafts" alt="Hero Image" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Grid Section -->
+    <section id="products" class="py-12 md:py-20 bg-pink-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Our Featured Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <!-- Placeholder image URL with a pastel color theme -->
+                    <img src="https://placehold.co/600x400/fbcfe8/be185d?text=Plushie" alt="Cute Plushie" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-bold text-xl text-gray-900">Fluffy Bear Plushie</h3>
+                            <p class="text-gray-600 mt-2">A super soft and cuddly plushie.</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-2xl font-bold text-purple-600">$25.00</span>
+                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <!-- Placeholder image URL with a pastel color theme -->
+                    <img src="https://placehold.co/600x400/bfdbfe/1d4ed8?text=Hoodie" alt="Stylish Hoodie" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-bold text-xl text-gray-900">Cozy Hand-knit Hoodie</h3>
+                            <p class="text-gray-600 mt-2">Perfect for chilly days.</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-2xl font-bold text-purple-600">$45.00</span>
+                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <!-- Placeholder image URL with a pastel color theme -->
+                    <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Tote+Bag" alt="Cute Tote Bag" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-bold text-xl text-gray-900">Embroidered Tote Bag</h3>
+                            <p class="text-gray-600 mt-2">Carry your essentials in style.</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-2xl font-bold text-purple-600">$18.00</span>
+                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                    <!-- Placeholder image URL with a pastel color theme -->
+                    <img src="https://placehold.co/600x400/dcfce7/16a34a?text=Craft+Set" alt="DIY Craft Set" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h3 class="font-bold text-xl text-gray-900">DIY Craft Kit</h3>
+                            <p class="text-gray-600 mt-2">Create your own masterpiece.</p>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-2xl font-bold text-purple-600">$30.00</span>
+                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 KraftedWithChrist. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Modal for Cart Notifications -->
+    <div id="cart-modal" class="modal">
+        <div class="bg-white rounded-xl shadow-lg p-8 max-w-sm w-full text-center">
+            <h3 class="text-xl font-bold text-gray-900">Item Added to Cart!</h3>
+            <p class="text-gray-600 mt-2">Your item has been successfully added.</p>
+            <button id="close-modal-btn" class="mt-4 px-6 py-2 bg-purple-400 text-white rounded-full hover:bg-purple-500 transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for button functionality -->
+    <script>
+        // Get all 'Add to Cart' buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+        // Get the modal and its close button
+        const modal = document.getElementById('cart-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        // Function to show the modal
+        function showModal() {
+            modal.style.display = 'flex';
+        }
+
+        // Function to hide the modal
+        function hideModal() {
+            modal.style.display = 'none';
+        }
+
+        // Add a click event listener to each 'Add to Cart' button
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                showModal(); // Show the notification modal
+            });
+        });
+
+        // Add a click event listener to the close button
+        closeModalBtn.addEventListener('click', hideModal);
+
+        // Hide the modal if the user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
