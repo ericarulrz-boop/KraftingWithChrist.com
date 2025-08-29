@@ -26,158 +26,211 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* Initially hide the cart page and checkout page */
+        #cart-page, #checkout-page {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Header & Navigation Bar -->
-    <header class="bg-white shadow-lg py-4 px-6 md:px-12">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-900">
-                KraftedWithChrist
-            </a>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#products" class="text-gray-600 hover:text-gray-900 transition-colors">Products</a>
-                <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <button class="relative text-gray-600 hover:text-gray-900 focus:outline-none">
-                    <!-- Shopping Cart Icon (using inline SVG for simplicity) -->
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
-                    </svg>
-                    <!-- Small circle to show number of items in cart -->
-                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-                </button>
+    <!-- Main Shop Content -->
+    <div id="shop-page">
+        <!-- Header & Navigation Bar -->
+        <header class="bg-white shadow-lg py-4 px-6 md:px-12">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-gray-900">
+                    KraftedWithChrist
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#products" class="text-gray-600 hover:text-gray-900 transition-colors">Products</a>
+                    <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button id="view-cart-btn" class="relative text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <!-- Shopping Cart Icon (using inline SVG for simplicity) -->
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
+                        </svg>
+                        <!-- Small circle to show number of items in cart -->
+                        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                    </button>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <main class="py-12 md:py-20">
+        <!-- Hero Section -->
+        <main class="py-12 md:py-20">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Stitched with Happiness in Every Creation</h1>
+                        <p class="mt-4 text-lg text-gray-600">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
+                        <a href="#products" class="mt-8 self-start px-6 py-3 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                            Shop Now
+                        </a>
+                    </div>
+                    <div class="md:w-1/2">
+                        <!-- Updated image for the hero section, using the uploaded logo.png -->
+                        <img src="logo.png" alt="KraftedWithChrist logo with a grid background and a teddy bear and flower" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Product Grid Section -->
+        <section id="products" class="py-12 md:py-20 bg-pink-50">
+            <div class="container mx-auto px-6 md:px-12">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Our Featured Products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <!-- Placeholder image URL with a pastel color theme -->
+                        <img src="https://placehold.co/600x400/fbcfe8/be185d?text=Plushie" alt="Cute Plushie" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900">Small Pink Octopus</h3>
+                                <p class="text-gray-600 mt-2">A super soft and cuddly plushie.</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <span class="text-2xl font-bold text-purple-600">$1.00</span>
+                                <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors" data-price="1.00" data-name="Small Pink Octopus">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2: Accessories -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <!-- Placeholder image URL with a pastel color theme -->
+                        <img src="https://placehold.co/600x400/bfdbfe/1d4ed8?text=Accessories" alt="Accessories" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900">Rose Hairpin</h3>
+                                <p class="text-gray-600 mt-2">A charming accessory for your hair.</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <span class="text-2xl font-bold text-purple-600">$5.00</span>
+                                <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors" data-price="5.00" data-name="Rose Hairpin">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3: Clothes -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <!-- Placeholder image URL with a pastel color theme -->
+                        <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Clothes" alt="Clothes" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900">Cozy Mesh Sweater</h3>
+                                <p class="text-gray-600 mt-2">A lightweight and stylish layer for any outfit.</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <span class="text-2xl font-bold text-purple-600">$10.00</span>
+                                <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors" data-price="10.00" data-name="Cozy Mesh Sweater">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4: Pillows -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <!-- Placeholder image URL with a pastel color theme -->
+                        <img src="https://placehold.co/600x400/dcfce7/16a34a?text=Pillows" alt="Pillows" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col justify-between flex-grow">
+                            <div>
+                                <h3 class="font-bold text-xl text-gray-900">Pink Heart Pillow</h3>
+                                <p class="text-gray-600 mt-2">A soft and cuddly pillow for your room.</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between">
+                                <span class="text-2xl font-bold text-purple-600">$5.00</span>
+                                <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors" data-price="5.00" data-name="Pink Heart Pillow">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section id="about" class="py-12 md:py-20 bg-gray-200">
+            <div class="container mx-auto px-6 md:px-12 text-center max-w-4xl">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission & Vision</h2>
+                <p class="text-lg text-gray-600 mb-12">
+                    Feeling anxious or self-conscious is something many people deal with. At KraftedWithChrist, we're all about helping you feel stronger and braver. For now, we want to focus on making cute plushies, clothes, and other fun stuff.
+                </p>
+                <p class="text-lg text-gray-600">
+                    Our big dream is for KraftedWithChrist to be a huge, wonderful business with products all over the world!
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 py-8">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2024 KraftedWithChrist. All rights reserved.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart-page" class="py-12 md:py-20 bg-gray-100 min-h-screen">
         <div class="container mx-auto px-6 md:px-12">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
-                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Stitched with Happiness in Every Creation</h1>
-                    <p class="mt-4 text-lg text-gray-600">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
-                    <a href="#products" class="mt-8 self-start px-6 py-3 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
-                        Shop Now
-                    </a>
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Your Cart</h2>
+                <div id="cart-items" class="space-y-4">
+                    <!-- Cart items will be dynamically added here -->
                 </div>
-                <div class="md:w-1/2">
-                    <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/800x600/e9d5ff/8b5cf6?text=Handmade+Crafts" alt="Hero Image" class="w-full h-full object-cover">
+                <div id="cart-summary" class="mt-8 border-t-2 border-gray-200 pt-4 text-right">
+                    <p class="text-lg font-semibold text-gray-900">Total: <span id="cart-total">$0.00</span></p>
+                </div>
+                <div class="mt-8 flex justify-between items-center">
+                    <button id="back-to-shop-btn" class="px-6 py-3 bg-gray-400 text-white font-semibold rounded-full shadow-md hover:bg-gray-500 transition-colors">
+                        Back to Shop
+                    </button>
+                    <button id="checkout-btn" class="px-6 py-3 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
+                        Checkout
+                    </button>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Product Grid Section -->
-    <section id="products" class="py-12 md:py-20 bg-pink-50">
+    <!-- New Checkout Page -->
+    <div id="checkout-page" class="py-12 md:py-20 bg-gray-100 min-h-screen">
         <div class="container mx-auto px-6 md:px-12">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Our Featured Products</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
-                <!-- Product Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/fbcfe8/be185d?text=Plushie" alt="Cute Plushie" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-900">Small Pink Octopus</h3>
-                            <p class="text-gray-600 mt-2">A super soft and cuddly plushie.</p>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$1.00</span>
-                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Choose Your Payment Method</h2>
+                <div class="space-y-4">
+                    <button class="w-full px-6 py-4 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow hover:bg-gray-300 transition-colors">
+                        Pay with Credit / Debit Card
+                    </button>
+                    <button class="w-full px-6 py-4 bg-gray-200 text-gray-800 font-semibold rounded-lg shadow hover:bg-gray-300 transition-colors">
+                        Pay with Mastercard
+                    </button>
+                    <!-- More payment options can be added here -->
                 </div>
-
-                <!-- Product Card 2: Accessories -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/bfdbfe/1d4ed8?text=Accessories" alt="Accessories" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-900">Rose Hairpin</h3>
-                            <p class="text-gray-600 mt-2">A charming accessory for your hair.</p>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$5.00</span>
-                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
+                <div class="mt-8">
+                    <button id="back-to-cart-btn" class="w-full px-6 py-3 bg-gray-400 text-white font-semibold rounded-full shadow-md hover:bg-gray-500 transition-colors">
+                        Back to Cart
+                    </button>
                 </div>
-
-                <!-- Product Card 3: Clothes -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Clothes" alt="Clothes" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-900">Cozy Mesh Sweater</h3>
-                            <p class="text-gray-600 mt-2">A lightweight and stylish layer for any outfit.</p>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$10.00</span>
-                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 4: Pillows -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-                    <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/dcfce7/16a34a?text=Pillows" alt="Pillows" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col justify-between flex-grow">
-                        <div>
-                            <h3 class="font-bold text-xl text-gray-900">Pink Heart Pillow</h3>
-                            <p class="text-gray-600 mt-2">A soft and cuddly pillow for your room.</p>
-                        </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$5.00</span>
-                            <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
-
-    <!-- Mission & Vision Section -->
-    <section id="about" class="py-12 md:py-20 bg-gray-200">
-        <div class="container mx-auto px-6 md:px-12 text-center max-w-4xl">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission & Vision</h2>
-            <p class="text-lg text-gray-600 mb-12">
-                Feeling anxious or self-conscious is something many people deal with. At KraftedWithChrist, we're all about helping you feel stronger and braver. For now, we want to focus on making cute plushies, clothes, and other fun stuff.
-            </p>
-            <p class="text-lg text-gray-600">
-                Our big dream is for KraftedWithChrist to be a huge, wonderful business with products all over the world!
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-8">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 KraftedWithChrist. All rights reserved.</p>
-            <div class="mt-4 space-x-4">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <!-- Simple Modal for Cart Notifications -->
     <div id="cart-modal" class="modal">
@@ -197,7 +250,23 @@
         // Get the modal and its close button
         const modal = document.getElementById('cart-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
+        const cartCountElement = document.getElementById('cart-count');
         
+        // Get buttons and pages for navigation
+        const viewCartBtn = document.getElementById('view-cart-btn');
+        const backToShopBtn = document.getElementById('back-to-shop-btn');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const backToCartBtn = document.getElementById('back-to-cart-btn');
+
+        const shopPage = document.getElementById('shop-page');
+        const cartPage = document.getElementById('cart-page');
+        const checkoutPage = document.getElementById('checkout-page');
+        
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+
+        let cart = [];
+
         // Function to show the modal
         function showModal() {
             modal.style.display = 'flex';
@@ -208,10 +277,42 @@
             modal.style.display = 'none';
         }
 
+        // Function to render the cart items and total
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center text-gray-500">Your cart is empty.</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center p-4 bg-gray-50 rounded-lg shadow-sm';
+                    itemElement.innerHTML = `
+                        <p class="text-gray-900 font-medium">${item.name}</p>
+                        <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    total += item.price;
+                });
+            }
+            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+        }
+
         // Add a click event listener to each 'Add to Cart' button
         addToCartButtons.forEach(button => {
             button.addEventListener('click', () => {
-                showModal(); // Show the notification modal
+                const productName = button.getAttribute('data-name');
+                const productPrice = parseFloat(button.getAttribute('data-price'));
+                
+                // Add the item to the cart array
+                cart.push({ name: productName, price: productPrice });
+                
+                // Update the cart count displayed
+                cartCountElement.textContent = cart.length;
+                
+                // Show the notification modal
+                showModal(); 
             });
         });
 
@@ -223,6 +324,34 @@
             if (event.target === modal) {
                 hideModal();
             }
+        });
+
+        // Handle navigation to the cart page
+        viewCartBtn.addEventListener('click', () => {
+            shopPage.style.display = 'none';
+            cartPage.style.display = 'block';
+            checkoutPage.style.display = 'none';
+            renderCart(); // Render the cart items
+        });
+
+        // Handle navigation back to the shop page
+        backToShopBtn.addEventListener('click', () => {
+            cartPage.style.display = 'none';
+            shopPage.style.display = 'block';
+            checkoutPage.style.display = 'none';
+        });
+
+        // Handle navigation to the checkout page
+        checkoutBtn.addEventListener('click', () => {
+            cartPage.style.display = 'none';
+            shopPage.style.display = 'none';
+            checkoutPage.style.display = 'block';
+        });
+
+        // Handle navigation back to the cart page from checkout
+        backToCartBtn.addEventListener('click', () => {
+            checkoutPage.style.display = 'none';
+            cartPage.style.display = 'block';
         });
     </script>
 
