@@ -10,6 +10,7 @@
         /* Apply a nice font to the body */
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling for navigation links */
         }
 
         /* Basic styling for the modal, initially hidden */
@@ -37,8 +38,8 @@
             </a>
             <nav class="hidden md:flex space-x-6">
                 <a href="#products" class="text-gray-600 hover:text-gray-900 transition-colors">Products</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
             </nav>
             <div class="flex items-center space-x-4">
                 <button class="relative text-gray-600 hover:text-gray-900 focus:outline-none">
@@ -58,7 +59,7 @@
         <div class="container mx-auto px-6 md:px-12">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
                 <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Handmade with Love, for You.</h1>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Stitched with Happiness in Every Creation</h1>
                     <p class="mt-4 text-lg text-gray-600">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
                     <a href="#products" class="mt-8 self-start px-6 py-3 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
                         Shop Now
@@ -84,11 +85,11 @@
                     <img src="https://placehold.co/600x400/fbcfe8/be185d?text=Plushie" alt="Cute Plushie" class="w-full h-48 object-cover">
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <h3 class="font-bold text-xl text-gray-900">Fluffy Bear Plushie</h3>
+                            <h3 class="font-bold text-xl text-gray-900">Small Pink Octopus</h3>
                             <p class="text-gray-600 mt-2">A super soft and cuddly plushie.</p>
                         </div>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$25.00</span>
+                            <span class="text-2xl font-bold text-purple-600">$1.00</span>
                             <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
                                 Add to Cart
                             </button>
@@ -96,17 +97,17 @@
                     </div>
                 </div>
 
-                <!-- Product Card 2 -->
+                <!-- Product Card 2: Accessories -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
                     <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/bfdbfe/1d4ed8?text=Hoodie" alt="Stylish Hoodie" class="w-full h-48 object-cover">
+                    <img src="https://placehold.co/600x400/bfdbfe/1d4ed8?text=Accessories" alt="Accessories" class="w-full h-48 object-cover">
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <h3 class="font-bold text-xl text-gray-900">Cozy Hand-knit Hoodie</h3>
-                            <p class="text-gray-600 mt-2">Perfect for chilly days.</p>
+                            <h3 class="font-bold text-xl text-gray-900">Rose Hairpin</h3>
+                            <p class="text-gray-600 mt-2">A charming accessory for your hair.</p>
                         </div>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$45.00</span>
+                            <span class="text-2xl font-bold text-purple-600">$5.00</span>
                             <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
                                 Add to Cart
                             </button>
@@ -114,17 +115,17 @@
                     </div>
                 </div>
 
-                <!-- Product Card 3 -->
+                <!-- Product Card 3: Clothes -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
                     <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Tote+Bag" alt="Cute Tote Bag" class="w-full h-48 object-cover">
+                    <img src="https://placehold.co/600x400/e0e7ff/4f46e5?text=Clothes" alt="Clothes" class="w-full h-48 object-cover">
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <h3 class="font-bold text-xl text-gray-900">Embroidered Tote Bag</h3>
-                            <p class="text-gray-600 mt-2">Carry your essentials in style.</p>
+                            <h3 class="font-bold text-xl text-gray-900">Cozy Mesh Sweater</h3>
+                            <p class="text-gray-600 mt-2">A lightweight and stylish layer for any outfit.</p>
                         </div>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$18.00</span>
+                            <span class="text-2xl font-bold text-purple-600">$10.00</span>
                             <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
                                 Add to Cart
                             </button>
@@ -132,17 +133,17 @@
                     </div>
                 </div>
 
-                <!-- Product Card 4 -->
+                <!-- Product Card 4: Pillows -->
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
                     <!-- Placeholder image URL with a pastel color theme -->
-                    <img src="https://placehold.co/600x400/dcfce7/16a34a?text=Craft+Set" alt="DIY Craft Set" class="w-full h-48 object-cover">
+                    <img src="https://placehold.co/600x400/dcfce7/16a34a?text=Pillows" alt="Pillows" class="w-full h-48 object-cover">
                     <div class="p-6 flex flex-col justify-between flex-grow">
                         <div>
-                            <h3 class="font-bold text-xl text-gray-900">DIY Craft Kit</h3>
-                            <p class="text-gray-600 mt-2">Create your own masterpiece.</p>
+                            <h3 class="font-bold text-xl text-gray-900">Pink Heart Pillow</h3>
+                            <p class="text-gray-600 mt-2">A soft and cuddly pillow for your room.</p>
                         </div>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-2xl font-bold text-purple-600">$30.00</span>
+                            <span class="text-2xl font-bold text-purple-600">$5.00</span>
                             <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white font-semibold rounded-full shadow-md hover:bg-purple-500 transition-colors">
                                 Add to Cart
                             </button>
@@ -151,6 +152,19 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="about" class="py-12 md:py-20 bg-gray-200">
+        <div class="container mx-auto px-6 md:px-12 text-center max-w-4xl">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission & Vision</h2>
+            <p class="text-lg text-gray-600 mb-12">
+                Feeling anxious or self-conscious is something many people deal with. At KraftedWithChrist, we're all about helping you feel stronger and braver. For now, we want to focus on making cute plushies, clothes, and other fun stuff.
+            </p>
+            <p class="text-lg text-gray-600">
+                Our big dream is for KraftedWithChrist to be a huge, wonderful business with products all over the world!
+            </p>
         </div>
     </section>
 
