@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KraftedWithChrist Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #FFF8F8; /* Soft cream background */
+    }
+
+    /* Cart drawer animation */
+    #cart-drawer {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hide scroll when drawer is open */
+    body.cart-open {
+      overflow: hidden;
+    }
+
+    /* Add-to-cart bounce animation */
+    .bounce {
+      animation: bounce 0.4s;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-20">
+    <a href="#" class="text-2xl font-bold text-gray-900">KraftedWithChrist</a>
+    <div class="flex items-center space-x-4">
+      <button id="view-cart-btn" class="relative text-gray-700 hover:text-gray-900 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
+        </svg>
+        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-pink-400 rounded-full">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="py-12 md:py-20 px-6 md:px-12 bg-gradient-to-r from-pink-100 via-purple-100 to-emerald-100 rounded-b-3xl mb-12">
+    <div class="max-w-5xl mx-auto md:flex md:items-center md:space-x-8">
+      <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Stitched with Happiness in Every Creation</h1>
+        <p class="text-lg text-gray-700 mb-6">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
+        <button id="view-products-btn" class="px-6 py-3 bg-pink-400 text-white rounded-full shadow-md hover:bg-pink-500 transition">Shop Now</button>
+      </div>
+      <div class="md:w-1/2">
+        <img src="https://placehold.co/800x600/f8c8d8/a32b6e?text=Cute+Teddy+Bear" alt="Cute teddy bear" class="w-full h-full object-cover rounded-2xl shadow-lg">
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products-page" class="px-6 md:px-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-12">
+
+      <!-- Plushies Example -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://placehold.co/400x400/f4a2d8/6d226a?text=Pink+Octopus" alt="Pink Octopus" class="w-full h-64 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="font-bold text-xl mb-1">Small Pink Octopus</h3>
+          <p class="text-gray-600 mb-2">$1.00</p>
+          <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white rounded-full hover:bg-purple-500 transition">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
+        <img src="https://placehold.co/400x400/e3a6c2/7c4f4a?text=Pastel+Panda" alt="Pastel Panda" class="w-full h-64 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="font-bold text-xl mb-1">Pastel Panda</h3>
+          <p class="text-gray-600 mb-2">$1.75</p>
+          <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white rounded-full hover:bg-purple-500 transition">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-in Cart Drawer -->
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full z-30 overflow-y-auto">
+    <div class="p-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Cart</h2>
+      <div id="cart-items" class="space-y-4"></div>
+      <p class="text-lg font-semibold text-gray-900 mt-4 text-right">Total: <span id="cart-total">$0.00</span></p>
+      <div class="mt-6 flex justify-between">
+        <button id="close-cart-btn" class="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition">Close</button>
+        <button id="checkout-btn" class="px-4 py-2 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition">Checkout</button>
+      </div>
+
+      <!-- Hidden Formspree Form -->
+      <form id="order-form" action="https://formspree.io/f/xanayabn" method="POST">
+        <input type="hidden" name="order" id="order-details">
+        <input type="hidden" name="_redirect" value="thankyou.html">
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let cart = [];
+    const cartCount = document.getElementById('cart-count');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('cart-total');
+    const orderForm = document.getElementById('order-form');
+    const orderDetails = document.getElementById('order-details');
+
+    // Show/hide drawer
+    function openCart() {
+      cartDrawer.style.transform = 'translateX(0)';
+      document.body.classList.add('cart-open');
+    }
+    function closeCart() {
+      cartDrawer.style.transform = 'translateX(100%)';
+      document.body.classList.remove('cart-open');
+    }
+
+    document.getElementById('view-cart-btn').addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+
+    // Add to cart buttons
+    const addButtons = document.querySelectorAll('.add-to-cart-btn');
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.parentElement;
+        const name = card.querySelector('h3').textContent;
+        const price = parseFloat(card.querySelector('p').textContent.replace('$',''));
+        cart.push({name, price});
+        cartCount.textContent = cart.length;
+
+        // Animate button
+        btn.classList.add('bounce');
+        setTimeout(() => btn.classList.remove('bounce'), 400);
+
+        renderCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      if(cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Your cart is empty.</p>';
+      } else {
+        cart.forEach(item => {
+          total += item.price;
+          const div = document.createElement('div');
+          div.className = 'flex justify-between items-center p-3 bg-pink-50 rounded-lg shadow-sm';
+          div.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
+          cartItemsContainer.appendChild(div);
+        });
+      }
+      cartTotalElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Checkout
+    checkoutBtn.addEventListener('click', () => {
+      if(cart.length === 0) return alert("Your cart is empty!");
+      const summary = cart.map(item => `${item.name} - $${item.price.toFixed(2)}`).join('\n');
+      orderDetails.value = summary;
+      orderForm.submit();
+      cart = [];
+      cartCount.textContent = 0;
+      renderCart();
+      closeCart();
+    });
+
+    // View products button scroll
+    document.getElementById('view-products-btn').addEventListener('click', () => {
+      document.getElementById('products-page').scrollIntoView({behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
 
