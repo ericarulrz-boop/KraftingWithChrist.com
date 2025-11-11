@@ -1,191 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KraftedWithChrist Shop</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      background-color: #FFF8F8; /* Soft cream background */
-    }
-
-    /* Cart drawer animation */
-    #cart-drawer {
-      transition: transform 0.3s ease-in-out;
-    }
-
-    /* Hide scroll when drawer is open */
-    body.cart-open {
-      overflow: hidden;
-    }
-
-    /* Add-to-cart bounce animation */
-    .bounce {
-      animation: bounce 0.4s;
-    }
-
-    @keyframes bounce {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KraftedWithChrist Shop</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; background:#FFF8F8; }
+.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+#cart-page,#checkout-page,#contact-us-page,#products-page,#plushies-page,#accessories-page,#clothes-page,#pillows-page { display:none; }
+.qty-btn { background:#FBCFE8; padding:2px 8px; border-radius:5px; font-weight:bold; }
+.bounce { animation: bounce 0.4s; }
+@keyframes bounce { 0%,100%{ transform:scale(1); }50%{ transform:scale(1.3); } }
+</style>
 </head>
-<body>
+<body class="text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-20">
-    <a href="#" class="text-2xl font-bold text-gray-900">KraftedWithChrist</a>
-    <div class="flex items-center space-x-4">
-      <button id="view-cart-btn" class="relative text-gray-700 hover:text-gray-900 focus:outline-none">
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
-        </svg>
-        <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-pink-400 rounded-full">0</span>
-      </button>
-    </div>
-  </header>
+<!-- Main Shop Page -->
+<div id="shop-page">
+<header class="bg-white shadow-lg py-4 px-6 md:px-12">
+<div class="container mx-auto flex justify-between items-center">
+<a href="#" class="text-2xl font-bold text-pink-400">KraftedWithChrist</a>
+<nav class="hidden md:flex space-x-6">
+<button id="view-products-btn" class="text-gray-600 hover:text-pink-400 transition">Products</button>
+<a href="#about" class="text-gray-600 hover:text-pink-400 transition">About</a>
+<button id="view-contact-btn" class="text-gray-600 hover:text-pink-400 transition">Contact Us</button>
+</nav>
+<div class="flex items-center space-x-4">
+<button id="view-cart-btn" class="relative text-gray-600 hover:text-pink-400">
+<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5.4M7 13l-2.293 2.293c-.63.63-.105 1.623.738 1.623H17.5M16 8V6a2 2 0 00-2-2H8a2 2 0 00-2 2v2M8 8h8M8 12h8M8 16h8" />
+</svg>
+<span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-pink-400 rounded-full">0</span>
+</button>
+</div>
+</div>
+</header>
 
-  <!-- Hero -->
-  <section class="py-12 md:py-20 px-6 md:px-12 bg-gradient-to-r from-pink-100 via-purple-100 to-emerald-100 rounded-b-3xl mb-12">
-    <div class="max-w-5xl mx-auto md:flex md:items-center md:space-x-8">
-      <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Stitched with Happiness in Every Creation</h1>
-        <p class="text-lg text-gray-700 mb-6">Explore our unique collection of handcrafted plushies, clothes, and more. Each item is made with care and passion.</p>
-        <button id="view-products-btn" class="px-6 py-3 bg-pink-400 text-white rounded-full shadow-md hover:bg-pink-500 transition">Shop Now</button>
-      </div>
-      <div class="md:w-1/2">
-        <img src="https://placehold.co/800x600/f8c8d8/a32b6e?text=Cute+Teddy+Bear" alt="Cute teddy bear" class="w-full h-full object-cover rounded-2xl shadow-lg">
-      </div>
-    </div>
-  </section>
+<main class="py-12 md:py-20">
+<div class="container mx-auto px-6 md:px-12">
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
+<div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<h1 class="text-4xl md:text-5xl font-bold text-pink-400 leading-tight">Stitched with Happiness in Every Creation</h1>
+<p class="mt-4 text-lg text-gray-600">Explore our unique collection of handcrafted plushies, clothes, and more.</p>
+<a href="#products" class="mt-8 self-start px-6 py-3 bg-pink-200 text-white font-semibold rounded-full shadow-md hover:bg-pink-300 transition">Shop Now</a>
+</div>
+<div class="md:w-1/2">
+<img src="https://placehold.co/800x600/f8c8d8/a32b6e?text=Cute+Teddy+Bear" alt="A cute teddy bear" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</main>
 
-  <!-- Products Section -->
-  <section id="products-page" class="px-6 md:px-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-12">
+<section id="about" class="py-12 md:py-20 bg-pink-50">
+<div class="container mx-auto px-6 md:px-12 text-center max-w-4xl">
+<h2 class="text-3xl font-bold text-pink-400 mb-6">Our Mission & Vision</h2>
+<p class="text-lg text-gray-600 mb-12">
+Feeling anxious or self-conscious is something many people deal with. At KraftedWithChrist, we're all about helping you feel stronger and braver.
+</p>
+<p class="text-lg text-gray-600">
+Our big dream is for KraftedWithChrist to be a huge, wonderful business with products all over the world!
+</p>
+</div>
+</section>
 
-      <!-- Plushies Example -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
-        <img src="https://placehold.co/400x400/f4a2d8/6d226a?text=Pink+Octopus" alt="Pink Octopus" class="w-full h-64 object-cover">
-        <div class="p-4 text-center">
-          <h3 class="font-bold text-xl mb-1">Small Pink Octopus</h3>
-          <p class="text-gray-600 mb-2">$1.00</p>
-          <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white rounded-full hover:bg-purple-500 transition">Add to Cart</button>
-        </div>
-      </div>
+<footer class="bg-pink-100 text-gray-800 py-8">
+<div class="container mx-auto text-center">
+<p>&copy; 2024 KraftedWithChrist. All rights reserved.</p>
+<div class="mt-4 space-x-4">
+<a href="#" class="hover:text-pink-400 transition">Privacy Policy</a>
+<a href="#" class="hover:text-pink-400 transition">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
 
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
-        <img src="https://placehold.co/400x400/e3a6c2/7c4f4a?text=Pastel+Panda" alt="Pastel Panda" class="w-full h-64 object-cover">
-        <div class="p-4 text-center">
-          <h3 class="font-bold text-xl mb-1">Pastel Panda</h3>
-          <p class="text-gray-600 mb-2">$1.75</p>
-          <button class="add-to-cart-btn px-4 py-2 bg-purple-400 text-white rounded-full hover:bg-purple-500 transition">Add to Cart</button>
-        </div>
-      </div>
+<!-- Products Page -->
+<div id="products-page" class="py-12 md:py-20 bg-pink-50 min-h-screen">
+<div class="container mx-auto px-6 md:px-12">
+<div class="flex justify-between items-center mb-10">
+<button id="back-from-products-btn" class="px-6 py-3 bg-pink-200 text-white rounded-full hover:bg-pink-300 transition">&larr; Back to Shop</button>
+<h2 class="text-3xl font-bold text-pink-400 text-center flex-grow">Shop Our Products</h2>
+<div></div>
+</div>
 
-    </div>
-  </section>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+<div id="plushies-btn" class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
+<img src="https://placehold.co/800x600/fbcfe8/be185d?text=Plushies" alt="Plushies" class="w-full h-64 object-cover">
+<div class="p-6 text-center">
+<h3 class="font-bold text-2xl text-pink-400">Plushies</h3>
+</div>
+</div>
+<div id="accessories-btn" class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
+<img src="https://placehold.co/800x600/bfdbfe/1d4ed8?text=Accessories" alt="Accessories" class="w-full h-64 object-cover">
+<div class="p-6 text-center">
+<h3 class="font-bold text-2xl text-pink-400">Accessories</h3>
+</div>
+</div>
+<div id="clothes-btn" class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
+<img src="https://placehold.co/800x600/e0e7ff/4f46e5?text=Clothes" alt="Clothes" class="w-full h-64 object-cover">
+<div class="p-6 text-center">
+<h3 class="font-bold text-2xl text-pink-400">Clothes</h3>
+</div>
+</div>
+<div id="pillows-btn" class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
+<img src="https://placehold.co/800x600/dcfce7/16a34a?text=Pillows" alt="Pillows" class="w-full h-64 object-cover">
+<div class="p-6 text-center">
+<h3 class="font-bold text-2xl text-pink-400">Pillows</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-  <!-- Slide-in Cart Drawer -->
-  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full z-30 overflow-y-auto">
-    <div class="p-6">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Cart</h2>
-      <div id="cart-items" class="space-y-4"></div>
-      <p class="text-lg font-semibold text-gray-900 mt-4 text-right">Total: <span id="cart-total">$0.00</span></p>
-      <div class="mt-6 flex justify-between">
-        <button id="close-cart-btn" class="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition">Close</button>
-        <button id="checkout-btn" class="px-4 py-2 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition">Checkout</button>
-      </div>
+<!-- Cart Page -->
+<div id="cart-page" class="py-12 md:py-20 bg-pink-50 min-h-screen">
+<div class="container mx-auto px-6 md:px-12">
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 md:p-12">
+<h2 class="text-3xl font-bold text-pink-400 mb-6 text-center">Your Cart</h2>
+<div id="cart-items" class="space-y-4"></div>
+<div id="cart-summary" class="mt-8 border-t-2 border-gray-200 pt-4 text-right">
+<p class="text-lg font-semibold text-gray-900">Total: <span id="cart-total">$0.00</span></p>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<button id="back-to-shop-btn" class="px-6 py-3 bg-pink-200 text-white rounded-full hover:bg-pink-300 transition">Back to Shop</button>
+<button id="checkout-btn" class="px-6 py-3 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition">Checkout</button>
+</div>
+</div>
+</div>
+</div>
 
-      <!-- Hidden Formspree Form -->
-      <form id="order-form" action="https://formspree.io/f/xanayabn" method="POST">
-        <input type="hidden" name="order" id="order-details">
-        <input type="hidden" name="_redirect" value="thankyou.html">
-      </form>
-    </div>
-  </div>
+<!-- Checkout Page -->
+<div id="checkout-page" class="py-12 md:py-20 bg-pink-50 min-h-screen">
+<div class="container mx-auto px-6 md:px-12">
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 md:p-12 text-center">
+<h2 class="text-3xl font-bold text-pink-400 mb-6">Checkout</h2>
+<form id="checkout-form" action="https://formspree.io/f/xanayabn" method="POST">
+<input type="hidden" name="cart" id="cart-data">
+<input type="email" name="email" placeholder="Your Email" required class="mb-4 px-4 py-2 rounded-lg border border-gray-300 w-full">
+<button type="submit" class="px-6 py-3 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition">Place Order</button>
+</form>
+<button id="back-to-cart-btn" class="mt-4 px-6 py-3 bg-pink-200 text-white rounded-full hover:bg-pink-300 transition">Back to Cart</button>
+</div>
+</div>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    let cart = [];
-    const cartCount = document.getElementById('cart-count');
-    const cartDrawer = document.getElementById('cart-drawer');
-    const closeCartBtn = document.getElementById('close-cart-btn');
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotalElement = document.getElementById('cart-total');
-    const orderForm = document.getElementById('order-form');
-    const orderDetails = document.getElementById('order-details');
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal">
+<div class="bg-white rounded-xl shadow-lg p-8 max-w-sm w-full text-center">
+<h3 class="text-xl font-bold text-pink-400">Item Added!</h3>
+<p class="text-gray-600 mt-2">Your item was successfully added to cart.</p>
+<button id="close-modal-btn" class="mt-4 px-6 py-2 bg-pink-400 text-white rounded-full hover:bg-pink-500 transition">Close</button>
+</div>
+</div>
 
-    // Show/hide drawer
-    function openCart() {
-      cartDrawer.style.transform = 'translateX(0)';
-      document.body.classList.add('cart-open');
-    }
-    function closeCart() {
-      cartDrawer.style.transform = 'translateX(100%)';
-      document.body.classList.remove('cart-open');
-    }
+<script>
+const addToCartButtons=document.querySelectorAll('.add-to-cart-btn');
+const modal=document.getElementById('cart-modal');
+const closeModalBtn=document.getElementById('close-modal-btn');
+const cartCount=document.getElementById('cart-count');
+const viewCartBtn=document.getElementById('view-cart-btn');
+const viewContactBtn=document.getElementById('view-contact-btn');
+const viewProductsBtn=document.getElementById('view-products-btn');
+const backToShopBtn=document.getElementById('back-to-shop-btn');
+const checkoutBtn=document.getElementById('checkout-btn');
+const backToCartBtn=document.getElementById('back-to-cart-btn');
+const backFromProductsBtn=document.getElementById('back-from-products-btn');
+const cartItemsContainer=document.getElementById('cart-items');
+const cartTotalElement=document.getElementById('cart-total');
+const checkoutForm=document.getElementById('checkout-form');
+const cartDataInput=document.getElementById('cart-data');
 
-    document.getElementById('view-cart-btn').addEventListener('click', openCart);
-    closeCartBtn.addEventListener('click', closeCart);
+const shopPage=document.getElementById('shop-page');
+const cartPage=document.getElementById('cart-page');
+const checkoutPage=document.getElementById('checkout-page');
+const contactUsPage=document.getElementById('contact-us-page');
+const productsPage=document.getElementById('products-page');
 
-    // Add to cart buttons
-    const addButtons = document.querySelectorAll('.add-to-cart-btn');
-    addButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.parentElement;
-        const name = card.querySelector('h3').textContent;
-        const price = parseFloat(card.querySelector('p').textContent.replace('$',''));
-        cart.push({name, price});
-        cartCount.textContent = cart.length;
+let cart=[];
 
-        // Animate button
-        btn.classList.add('bounce');
-        setTimeout(() => btn.classList.remove('bounce'), 400);
+// Modal
+function showModal(){ modal.style.display='flex'; }
+function hideModal(){ modal.style.display='none'; }
+closeModalBtn.addEventListener('click',hideModal);
+window.addEventListener('click',e=>{ if(e.target===modal) hideModal(); });
 
-        renderCart();
-        openCart();
-      });
-    });
+// Navigation
+function showPage(page){[shopPage,cartPage,checkoutPage,contactUsPage,productsPage].forEach(p=>p.style.display=p===page?'block':'none');}
+viewProductsBtn.addEventListener('click',()=>showPage(productsPage));
+viewCartBtn.addEventListener('click',()=>{showPage(cartPage); renderCart();});
+viewContactBtn.addEventListener('click',()=>showPage(contactUsPage));
+backToShopBtn.addEventListener('click',()=>showPage(shopPage));
+backToCartBtn.addEventListener('click',()=>showPage(cartPage));
+backFromProductsBtn.addEventListener('click',()=>showPage(shopPage));
+checkoutBtn.addEventListener('click',()=>showPage(checkoutPage));
 
-    function renderCart() {
-      cartItemsContainer.innerHTML = '';
-      let total = 0;
-      if(cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Your cart is empty.</p>';
-      } else {
-        cart.forEach(item => {
-          total += item.price;
-          const div = document.createElement('div');
-          div.className = 'flex justify-between items-center p-3 bg-pink-50 rounded-lg shadow-sm';
-          div.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
-          cartItemsContainer.appendChild(div);
-        });
-      }
-      cartTotalElement.textContent = `$${total.toFixed(2)}`;
-    }
+// Add to Cart
+addToCartButtons.forEach(btn=>{
+btn.addEventListener('click',()=>{
+const name=btn.dataset.name;
+const price=parseFloat(btn.dataset.price);
+let existing=cart.find(item=>item.name===name);
+if(existing){ existing.qty++; } else { cart.push({name,price,qty:1}); }
+cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0);
+showModal();
+});
+});
 
-    // Checkout
-    checkoutBtn.addEventListener('click', () => {
-      if(cart.length === 0) return alert("Your cart is empty!");
-      const summary = cart.map(item => `${item.name} - $${item.price.toFixed(2)}`).join('\n');
-      orderDetails.value = summary;
-      orderForm.submit();
-      cart = [];
-      cartCount.textContent = 0;
-      renderCart();
-      closeCart();
-    });
+// Render Cart with animations
+function renderCart(){
+cartItemsContainer.innerHTML='';
+let total=0;
+if(cart.length===0){ cartItemsContainer.innerHTML='<p class="text-gray-500 text-center">Your cart is empty.</p>'; }
+else{
+cart.forEach((item,index)=>{
+total+=item.price*item.qty;
+const div=document.createElement('div');
+div.className='flex justify-between items-center p-3 bg-pink-50 rounded-lg shadow-sm opacity-0 translate-x-6';
+div.innerHTML=`<div class="flex flex-col">
+<span class="font-medium">${item.name}</span>
+<div class="flex items-center space-x-2 mt-1">
+<button class="qty-btn" data-index="${index}" data-action="minus">-</button>
+<span>${item.qty}</span>
+<button class="qty-btn" data-index="${index}" data-action="plus">+</button>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span>$${(item.price*item.qty).toFixed(2)}</span>
+<button class="text-red-500 hover:text-red-700 mt-1" data-index="${index}" data-action="remove">Remove</button>
+</div>`;
+cartItemsContainer.appendChild(div);
+setTimeout(()=>{div.classList.remove('opacity-0','translate-x-6');div.classList.add('transition-all','duration-300','ease-out');},10);
+});
+document.querySelectorAll('.qty-btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const idx=parseInt(btn.dataset.index);
+if(btn.dataset.action==='plus'){cart[idx].qty++; btn.parentElement.querySelector('span').classList.add('bounce'); setTimeout(()=>btn.parentElement.querySelector('span').classList.remove('bounce'),400);}
+else if(btn.dataset.action==='minus'){cart[idx].qty--; if(cart[idx].qty<1) cart.splice(idx,1);}
+cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0); renderCart();
+});
+});
+document.querySelectorAll('button[data-action="remove"]').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const idx=parseInt(btn.dataset.index);
+const div=btn.closest('div');
+div.classList.add('opacity-0','translate-x-6','transition-all','duration-300');
+setTimeout(()=>{cart.splice(idx,1); cartCount.textContent=cart.reduce((a,b)=>a+b.qty,0); renderCart();},300);
+});
+});
+}
+cartTotalElement.textContent=`$${total.toFixed(2)}`;
+}
 
-    // View products button scroll
-    document.getElementById('view-products-btn').addEventListener('click', () => {
-      document.getElementById('products-page').scrollIntoView({behavior:'smooth'});
-    });
-  </script>
+// Checkout form
+checkoutForm.addEventListener('submit',e=>{
+e.preventDefault();
+cartDataInput.value=cart.map(item=>`${item.name} x${item.qty}`).join(', ');
+checkoutForm.submit();
+setTimeout(()=>{window.location.href='thankyou.html';},100);
+});
+</script>
+
 </body>
 </html>
-
